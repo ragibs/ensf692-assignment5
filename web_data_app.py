@@ -80,7 +80,9 @@ def book_data():
         prices.append(float(book.find('p', class_="price_color").text[1:]))
 
     # Create a DataFrame using the two lists
-    book_data = pd.DataFrame(list(zip(titles, prices)), columns=['Titles','Prices'])    
+    book_data = pd.DataFrame(list(zip(titles, prices)), columns=['Titles','Prices'])
+    book_data['Sale Price'] = round(book_data['Prices'] * 0.75, 2)
+    
     print(book_data)        # Print to the terminal as confirmation - only we can see this
 
     # Format and print the DataFrame using the html template provided in the templates subdirectory
